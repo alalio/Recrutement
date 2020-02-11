@@ -150,7 +150,7 @@ plt.show()
 
 # ### Step 0: import the packages:
 
-# In[149]:
+# In[1]:
 
 
 # import ...
@@ -160,7 +160,14 @@ import seaborn as sns
 import pandas as pd
 from sklearn.cluster import KMeans
 from sklearn.mixture import GaussianMixture
-
+import tensorflow as tf
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras import Sequential
+from tensorflow.keras.layers import Input,Dense,Dropout
+from sklearn.model_selection import KFold
+from sklearn.svm import SVC 
+from sklearn.metrics import classification_report
+import numpy as np
 from sklearn.preprocessing import Normalizer
 
 
@@ -313,11 +320,6 @@ plt.show()
 # In[306]:
 
 
-import tensorflow as tf
-from tensorflow.keras.optimizers import Adam
-from tensorflow.keras import Sequential
-from tensorflow.keras.layers import Input,Dense,Dropout
-from sklearn.model_selection import KFold
 model = Sequential([
     Input(shape=(3)),
     Dense(16, activation='tanh'),
@@ -343,9 +345,6 @@ model.fit(x=X_train_pca,y=y,epochs=9)
 # In[199]:
 
 
-from sklearn.svm import SVC 
-from sklearn.metrics import classification_report
-import numpy as np
 svm_model = SVC(kernel = 'rbf', gamma='auto').fit(X_train_pca, Y_train)
 
 
